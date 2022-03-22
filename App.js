@@ -1,8 +1,12 @@
 import React from 'react'
+import {StatusBar} from 'react-native'
 import Home from './src/pages/Home'
 
 export default function app(){
   return(
-    <Home/>
+    <>
+      <Home/>
+      <StatusBar barStyle='light-content' />
+    </>
   )
 }
