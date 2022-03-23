@@ -62,6 +62,7 @@ export default function Home(){
             </Text>
 
             <TextInput 
+            value={newSkill}
             style={styles.input}
             placeholder="New Skill"
             onChangeText={setNewSkill}
