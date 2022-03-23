@@ -2,23 +2,23 @@ import React from 'react'
 import {TouchableOpacity, Text, StyleSheet, TouchableOpacityProps} from 'react-native'
 
 interface SkillCardProps extends TouchableOpacityProps {
-    skill: string
+    task: string
 }
 
-export function SkillCard({skill, ...rest}){
+export function TaskCard({task, ...rest}){
 
     return(
         <Text
-            style={styles.skill}
+            style={styles.task}
             {...rest}
             >
-                {skill}
+                {task}
         </Text>
     )
 }
 
 const styles = StyleSheet.create({
-    skill: {
+    task: {
         color: '#fff',
         backgroundColor: '#1F1E25',
         padding: 20,

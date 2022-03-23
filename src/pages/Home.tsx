@@ -7,37 +7,37 @@ import {
     FlatList,
 } from 'react-native'
 import { Button } from '../components/Button'
-import { SkillCard } from '../components/SkillCard'
+import { TaskCard } from '../components/TaskCard'
 
-interface SkillData{
+interface TaskData{
     id: string,
     name: string
 }
 
 interface KeyExtractorProps{
-    item: SkillData,
+    item: TaskData,
     index: number
 }
 
 export default function Home(){
 
-    const [newSkill, setNewSkill] = useState('')
-    const [mySkills, setMySkills] = useState<SkillData[]>([])
+    const [newTask, setNewTask] = useState('')
+    const [myTasks, setMyTasks] = useState<TaskData[]>([])
     const [gretting, setGretting] = useState('')
 
-    function handleAddNewSkill(){
+    function handleAddNewTask(){
 
         const data = {
             id: String(new Date().getTime()),
-            name: newSkill
+            name: newTask
         }
 
-        setMySkills(oldState  => [...oldState, data])
-        setNewSkill('')
+        setMyTasks(oldState  => [...oldState, data])
+        setNewTask('')
     }
 
-    function handleRemoveSkill(id: string){
-        setMySkills(oldState => oldState.filter(skill => skill.id !== id))
+    function handleRemoveTask(id: string){
+        setMyTasks(oldState => oldState.filter(task => task.id !== id))
     }
 
     useEffect(() => {
@@ -62,14 +62,14 @@ export default function Home(){
             </Text>
 
             <TextInput 
-            value={newSkill}
+            value={newTask}
             style={styles.input}
-            placeholder="New Skill"
-            onChangeText={setNewSkill}
+            placeholder="New Task"
+            onChangeText={setNewTask}
             />
 
             <Button 
-            onPress={handleAddNewSkill}
+            onPress={handleAddNewTask}
             title="Add"
             />
 
@@ -78,16 +78,16 @@ export default function Home(){
                 marginTop: 30,
             }]}
             >
-                My Skills
+                My Tasks
             </Text>
 
             <FlatList 
-            data={mySkills}
+            data={myTasks}
             keyExtractor={item => item.id}
             renderItem={({item}) => (
-                <SkillCard 
-                skill={item.name}
-                onPress={() => handleRemoveSkill(item.id)}
+                <TaskCard 
+                task={item.name}
+                onPress={() => handleRemoveTask(item.id)}
                 />
             )}
             />
